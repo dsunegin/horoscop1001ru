@@ -49,6 +49,8 @@ const main = async (): Promise<string> => {
         const aliasUniq: string = '-' + crc16(now.toString()).toString(16);
 
         for (let ic = 0, icat; (icat = Zodiac[ic]); ++ic) {
+            await assets.wait(5000);            // Timeout for Next HTTP Request - To avoid blocking from website
+            
             let Response;
             await axios.get(icat.href,{ headers: { 'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
                     'Accept': 'application/json;charsrt: utf-8'},
@@ -83,7 +85,7 @@ const main = async (): Promise<string> => {
             const post = [ZnakTitle, ZnakPost, icat.code, site, language];
             await connectionESOTERIC.query(sql, post);
 
-            await assets.wait(5000);            // Timeout for Next HTTP Request - To avoid blocking from website
+
         } // End For
         return 'Successful';
     } catch (err) {

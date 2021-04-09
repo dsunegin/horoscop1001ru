@@ -1,8 +1,7 @@
 CREATE DATABASE esoteric CHARACTER SET utf8 COLLATE utf8_general_ci;
-#create user esoteric_user@localhost;
-#set password for esoteric_user@localhost=password('psw_esoteric_user');
-#grant all on esoteric.* to esoteric_user@localhost with grant option;
-grant all on esoteric.* to bublbe_press@localhost with grant option;
+create user esoteric_user@localhost;
+set password for esoteric_user@localhost=password('psw_esoteric_user');
+grant all on esoteric.* to esoteric_user@localhost with grant option;
 
 use esoteric;
 

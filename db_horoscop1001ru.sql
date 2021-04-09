@@ -1,38 +1,23 @@
-CREATE DATABASE recipe CHARACTER SET utf8 COLLATE utf8_general_ci;
-create user recipe_user@localhost;
-set password for recipe_user@localhost=password('psw_recipe_user');
-grant all on recipe.* to recipe_user@localhost with grant option;
+CREATE DATABASE esoteric CHARACTER SET utf8 COLLATE utf8_general_ci;
+#create user esoteric_user@localhost;
+#set password for esoteric_user@localhost=password('psw_esoteric_user');
+#grant all on esoteric.* to esoteric_user@localhost with grant option;
+grant all on esoteric.* to bublbe_press@localhost with grant option;
 
-use recipe;
+use esoteric;
 
-CREATE TABLE edaru (
+CREATE TABLE horoscope (
 id INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-name VARCHAR(255) NOT NULL,
-recipeCategory VARCHAR(255) NOT NULL,
-recipeCuisine VARCHAR(255) NOT NULL,
-datePublished DATETIME,
-cookTime VARCHAR(63),
-prepTime VARCHAR(63),
-totalTime VARCHAR(63),
-description TEXT,
-keywords TEXT,
-nutrition TEXT,
-ingredients TEXT,
-recipeInstructions TEXT,
-recipeIngredient TEXT,
-recipeYield INT(4) UNSIGNED,
-url TEXT,
-publisher TEXT,
-video TEXT,
-image TEXT,
-
-ratingValue float UNSIGNED,
-bestRating INT(1) UNSIGNED,
-worstRating INT(1) UNSIGNED,
-reviewCount INT(5) UNSIGNED,
-aggregateRating TEXT,
-author TEXT
-
+title_tpl TEXT,
+post_tpl  TEXT,
+title TEXT,
+post  TEXT,
+date      DATE,
+zodiac    VARCHAR(255),
+site      VARCHAR(255),
+href      VARCHAR(255),
+lang      VARCHAR(2) NOT NULL,
+published BOOLEAN DEFAULT false
 );
 
 

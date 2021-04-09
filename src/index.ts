@@ -45,12 +45,10 @@ const connectionESOTERIC = mysql
 
 const main = async (): Promise<string> => {
     try {
-        const now: Date = new Date(); // Now
-        const aliasUniq: string = '-' + crc16(now.toString()).toString(16);
 
         for (let ic = 0, icat; (icat = Zodiac[ic]); ++ic) {
             await assets.wait(5000);            // Timeout for Next HTTP Request - To avoid blocking from website
-            
+
             let Response;
             await axios.get(icat.href,{ headers: { 'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
                     'Accept': 'application/json;charsrt: utf-8'},
@@ -98,10 +96,11 @@ if (process.env.CRON) {
     console.log('Cron Scheduled');
     cron.schedule(
         process.env.CRON,
-        main()
-            .then(created => console.log(created))
-            .catch(err => console.error(err))
-        ,
+        () => {
+            main()
+                .then()
+                .catch(err => console.error(err));
+        },
         {scheduled: true}
     );
 } else {

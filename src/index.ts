@@ -7,9 +7,7 @@ import axios from 'axios';
 let iconv = require('iconv-lite');
 
 
-if (envconf.error) {
-    throw envconf.error;
-} // ERROR if Config .env file is missing
+if (envconf.error) {    throw envconf.error; } // ERROR if Config .env file is missing
 
 const site = '1001goroskop.ru';
 const language = 'ru';

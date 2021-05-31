@@ -25,6 +25,7 @@ const main = async (): Promise<string> => {
 
         for (let i = 0, itpl; (itpl = srcArr[i]); ++i) {
             let tpl = itpl.post.toString();
+            if (tpl.length == 0) return "ERROR! : ESOTERIC SOURCE TEMPLATE length=0";
             sql = `SELECT kto_chto,kogo_chego,komu_chemu,kogo_chto,kem_chem,kom_chom,m_kto_chto,m_kogo_chego,m_komu_chemu,m_kogo_chto,m_kem_chem,m_kom_chom FROM zodiac WHERE zodiac='${itpl.zodiac}' `;
             result = await connectionESOTERIC.query(sql);
             let zodiacArr = Object.entries(result[0][0]);
